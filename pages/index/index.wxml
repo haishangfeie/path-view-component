@@ -1,0 +1,7 @@
+<!--index.wxml-->
+<view class="container">
+  <text class="head-title">例子</text>
+  <path-view value="{{value}}"
+             btnTxt='选中本项'
+             catchtapBtn="selThis"></path-view>
+</view>

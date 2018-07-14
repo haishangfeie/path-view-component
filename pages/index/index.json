@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "path-view": "/components/path-view/index"
+  }
+}

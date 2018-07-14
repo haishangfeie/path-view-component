@@ -1,0 +1,30 @@
+<!--components/path-view/path-view.wxml-->
+<view>
+      <view class="path">
+            <view class="btn"
+                  style="{{currentPath.length===0? 'margin-bottom:10px;':'margin-bottom:0;'}}"
+                  wx:if="{{currentPath.length !==0}}"
+                  bindtap="toPath">返回上级</view>
+            <view class="btn"
+                  bindtap="toPath"
+                  data-index="{{index}}"
+                  wx:key="{{index}}"
+                  wx:for="{{currentPath}}">{{item.text}}</view>
+      </view>
+      <view class="list-view">
+            <view wx:for="{{outValue}}"
+                  wx:key="{{index}}"
+                  class="list-view-item"
+                  bindtap="tapItem"
+                  data-text="{{item.title}}"
+                  data-index="{{index}}">
+                  <text class="title"
+                        space="ensp">{{item.title}} </text>
+                  <text wx:if="{{item.children}}"
+                        class="tip">（进入下一级）</text>
+                  <view class="btn"
+                        catchtap="tapBtn"
+                        data-item="{{item}}">{{btnTxt}}</view>
+            </view>
+      </view>
+</view>
