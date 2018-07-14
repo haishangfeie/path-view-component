@@ -18,8 +18,7 @@ Component({
   },
   data: {
     outValue: [],
-    currentPath: [],
-    paths: []
+    currentPath: []
   },
   methods: {
     tapItem(e) {
