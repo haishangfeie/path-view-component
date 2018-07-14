@@ -4,7 +4,7 @@
 
 ## 项目截图
 
-![路径视图动态效果图](https://github.com/haishangfeie/path-view-component/static/1.png)
+![路径视图动态效果图](https://github.com/haishangfeie/path-view-component/static/1.gif)
 
 ## 使用方法
 
