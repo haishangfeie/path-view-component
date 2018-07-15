@@ -18,10 +18,19 @@ Component({
   },
   data: {
     outValue: [],
-    currentPath: []
+    currentPath: [],
+    // 判断当前是否已正在执行修改路径的方法
+    isChange: false
   },
   methods: {
     tapItem(e) {
+      // 如果正在执行修改路径的方法
+      if (this.data.isChange) {
+        return;
+      }
+      this.setData({
+        isChange: true
+      });
       // 获取当前点击的索引
       const currentIndex = e.currentTarget.dataset.index;
       const currentText = e.currentTarget.dataset.text;
@@ -36,6 +45,9 @@ Component({
         });
         this.selPath();
       }
+      this.setData({
+        isChange: false
+      });
     },
     // 选择路径
     // pathsIndex 是 paths 的索引
@@ -66,12 +78,22 @@ Component({
       });
     },
     toPath(e) {
+      // 如果正在执行修改路径的方法
+      if (this.data.isChange) {
+        return;
+      }
+      this.setData({
+        isChange: true
+      });
       // 获取当前点击的索引
       const index =
         e.currentTarget.dataset.index != undefined
           ? e.currentTarget.dataset.index
           : this.data.currentPath.length - 1;
       this.selPath(index - 1);
+      this.setData({
+        isChange: false
+      });
     },
     tapBtn(e) {
       this.triggerEvent('tapBtn', e.currentTarget.dataset.item);
