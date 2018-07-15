@@ -11,6 +11,14 @@ Component({
       type: Array,
       value: []
     },
+    pathMode:{
+      type:String,
+      value: 'folder'
+    },
+    firstFloorTxt:{
+      type:String,
+      value:'第一级'
+    },
     btnTxt: {
       type: String,
       value: '选择'
