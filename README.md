@@ -4,11 +4,11 @@
 
 ## 项目截图
 
-路径视图动态效果图-路径模式：currentPage:
-![路径视图动态效果图-路径模式：currentPage](https://github.com/haishangfeie/path-view-component/blob/master/static/1.gif?raw=true)
+路径视图动态效果图-路径模式：mode1:
+![路径视图动态效果图-路径模式：mode1](https://github.com/haishangfeie/path-view-component/blob/master/static/1.gif?raw=true)
 
-路径视图动态效果图-路径模式：folder:
-![路径视图动态效果图-路径模式：folder](https://github.com/haishangfeie/path-view-component/blob/master/static/2.gif?raw=true)
+路径视图动态效果图-路径模式：mode2:
+![路径视图动态效果图-路径模式：mode2](https://github.com/haishangfeie/path-view-component/blob/master/static/2.gif?raw=true)
 
 ## 使用方法
 
@@ -120,7 +120,7 @@ Page({
 | 参数      | 说明    | 类型      | 可选值 | 默认值  |
 |---------- |-------- |---------- |---------- |---------- |
 |value     | 显示的树状数据 | Array | Y | [] |
-|pathMode     | 路径模式，支持：'folder'、'currentPage'。'folder'模式，点击路径跳转时视图显示对应标签下一级的内容,'currentPage'模式，点击路径跳转时视图显示标签对应的那一层级的内容 | String | Y | folder |
+|pathMode     | 路径模式，支持：'mode1'、'mode2'。'mode1'模式，点击路径跳转时视图显示对应标签下一级的内容,'mode2'模式，点击路径跳转时视图显示标签对应的那一层级的内容 | String | Y | mode1 |
 |firstFloorTxt     | pathMode为'folder'时生效，指定第一级标签的文本 | String | Y | 第一级 |
 |btnTxt | 点击按钮显示的文本 | String | Y | 选择 |
 

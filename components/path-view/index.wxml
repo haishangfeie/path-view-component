@@ -1,18 +1,6 @@
 <!--components/path-view/path-view.wxml-->
 <view>
-  <block wx:if="{{pathMode === 'currentPage'}}">
-    <view class="path">
-      <view class="btn"
-            wx:if="{{currentPath.length !==0}}"
-            bindtap="toPath">返回上级</view>
-      <view class="btn"
-            bindtap="toPath"
-            data-index="{{index}}"
-            wx:key="{{index}}"
-            wx:for="{{currentPath}}">{{item.text}}</view>
-    </view>
-  </block>
-  <block wx:elif="{{pathMode === 'folder'}}">
+  <block wx:if="{{pathMode === 'mode1'}}">
     <view class="path">
       <view class="btn"
             bindtap="toPath">返回上级</view>
@@ -22,6 +10,18 @@
       <view class="btn"
             bindtap="toPath"
             data-index="{{index+1}}"
+            wx:key="{{index}}"
+            wx:for="{{currentPath}}">{{item.text}}</view>
+    </view>
+  </block>
+  <block wx:elif="{{pathMode === 'mode2'}}">
+    <view class="path">
+      <view class="btn"
+            wx:if="{{currentPath.length !==0}}"
+            bindtap="toPath">返回上级</view>
+      <view class="btn"
+            bindtap="toPath"
+            data-index="{{index}}"
             wx:key="{{index}}"
             wx:for="{{currentPath}}">{{item.text}}</view>
     </view>

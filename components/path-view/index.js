@@ -13,7 +13,7 @@ Component({
     },
     pathMode:{
       type:String,
-      value: 'folder'
+      value: 'mode1'
     },
     firstFloorTxt:{
       type:String,
