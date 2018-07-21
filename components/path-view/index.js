@@ -38,7 +38,7 @@ Component({
     },
     rootValue: {
       type: null,
-      value: undefined
+      value: null
     },
     pathMode: {
       type: String,
@@ -142,7 +142,8 @@ Component({
       return toTree({
         value: this.properties.unnormalizedValue,
         fatherKey: this.properties.fatherKey,
-        selfKey: this.properties.selfKey
+        selfKey: this.properties.selfKey,
+        rootValue: this.properties.rootValue === null ? undefined : this.properties.rootValue
       });
     }
   }
