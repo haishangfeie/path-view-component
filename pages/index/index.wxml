@@ -1,7 +1,12 @@
 <!--index.wxml-->
 <view class="container">
   <text class="head-title">例子</text>
+  <text class="item">传入树形数据</text>
   <path-view value="{{value}}"
+             btnTxt='选中本项'
+             catchtapBtn="selThis"></path-view>
+  <text class="item">传入未转换为树形结构的数组</text>
+  <path-view unnormalizedValue="{{unnormalizedValue}}"
              btnTxt='选中本项'
              catchtapBtn="selThis"></path-view>
 </view>

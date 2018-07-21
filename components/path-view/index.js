@@ -1,9 +1,21 @@
 // components/path-view/path-view.js
+import toTree from './toTree';
 Component({
   attached() {
+    // 优先使用value
+    if (this.properties.value.length > 0) {
+      this.setData({
+        normalValue: this.properties.value
+      });
+    } else {
+      // 将unnormalizedValue标准化
+      this.setData({
+        normalValue: this.normalizeValue()
+      });
+    }
     // 设置初始的输出值
     this.setData({
-      outValue: this.properties.value
+      outValue: this.data.normalValue
     });
   },
   properties: {
@@ -11,13 +23,30 @@ Component({
       type: Array,
       value: []
     },
-    pathMode:{
-      type:String,
+    // 非树形数据，仅在value无传参时生效
+    unnormalizedValue: {
+      type: Array,
+      value: []
+    },
+    fatherKey: {
+      type: String,
+      value: 'pid'
+    },
+    selfKey: {
+      type: String,
+      value: 'id'
+    },
+    rootValue: {
+      type: null,
+      value: undefined
+    },
+    pathMode: {
+      type: String,
       value: 'mode1'
     },
-    firstFloorTxt:{
-      type:String,
-      value:'第一级'
+    firstFloorTxt: {
+      type: String,
+      value: '第一级'
     },
     btnTxt: {
       type: String,
@@ -28,7 +57,9 @@ Component({
     outValue: [],
     currentPath: [],
     // 判断当前是否已正在执行修改路径的方法
-    isChange: false
+    isChange: false,
+    // 映射value值，用于将可能为标准化的值标准化
+    normalValue: []
   },
   methods: {
     tapItem(e) {
@@ -65,7 +96,7 @@ Component({
         return;
       }
       // 根据路径修改 outValue
-      let tmpValue = this.data.value;
+      let tmpValue = this.data.normalValue;
       // 如果 pathsIndex 是 -1 就应该要回到第一级
       if (pathsIndex === -1) {
         this.setData({
@@ -105,6 +136,14 @@ Component({
     },
     tapBtn(e) {
       this.triggerEvent('tapBtn', e.currentTarget.dataset.item);
+    },
+    // 将非标准值标准化
+    normalizeValue() {
+      return toTree({
+        value: this.properties.unnormalizedValue,
+        fatherKey: this.properties.fatherKey,
+        selfKey: this.properties.selfKey
+      });
     }
   }
 });

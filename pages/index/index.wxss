@@ -1,4 +1,13 @@
 /**index.wxss**/
 .head-title {
-  margin-bottom: 10px;
+  display: block;
+  text-align: center;
+  font-weight: 500;
+  font-size: 24px;
+}
+.item {
+  display: block;
+  margin: 20px 0 10px;
+  padding-left: 10px;
+  font-size: 16px;
 }

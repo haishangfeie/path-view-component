@@ -15,8 +15,9 @@
 ```
 git clone https://github.com/haishangfeie/path-view-component.git
 
-将components文件夹放入微信小程序项目根目录中
 ```
+
+将components文件夹放入微信小程序项目根目录中
 
 举例：例如是 index 页面要引入组件
 
@@ -119,12 +120,16 @@ Page({
 # API
 | 参数      | 说明    | 类型      | 可选值 | 默认值  |
 |---------- |-------- |---------- |---------- |---------- |
-|value     | 显示的树状数据 | Array | Y | [] |
+|value     | 要显示的树状数据 | Array | Y | [] |
 |pathMode     | 路径模式，支持：'mode1'、'mode2'。'mode1'模式，点击路径跳转时视图显示对应标签下一级的内容,'mode2'模式，点击路径跳转时视图显示标签对应的那一层级的内容 | String | Y | mode1 |
 |firstFloorTxt     | pathMode为'folder'时生效，指定第一级标签的文本 | String | Y | 第一级 |
 |btnTxt | 点击按钮显示的文本 | String | Y | 选择 |
+|unnormalizedValue | 仅在未传入value时生效，通过这个参数可以传入未转化为树状的数组 | Array | Y | [] |
+|fatherKey | 设置unnormalizedValue各子元素表示父级的标识符的键值 | String | Y | pid |
+|selfKey | 设置unnormalizedValue各子元素表示自身的标识符的键值 | String | Y | id |
+|rootValue | 设置unnormalizedValue中selfKey对应的值是什么时表示其是第一级的元素，即其没有父元素，默认时，没有该元素没有fatherKey字段或者该字段设置为undefined均认为其是第一级元素（注意null和undefined是不一样，如果想用null表示第一级元素，请设置为null） | String | Y | undefined |
 
-## 事件
+# 事件
 | 事件名      | 说明    | 参数      |
 |---------- |-------- |---------- |
 | tapBtn  | 单击节点按钮触发的事件 | 返回传入该item的所有信息 Object |
