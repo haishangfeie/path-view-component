@@ -2,31 +2,23 @@
 import toTree from './toTree';
 Component({
   attached() {
-    // 优先使用value
-    if (this.properties.value.length > 0) {
-      this.setData({
-        normalValue: this.properties.value
-      });
-    } else {
-      // 将unnormalizedValue标准化
-      this.setData({
-        normalValue: this.normalizeValue()
-      });
-    }
-    // 设置初始的输出值
-    this.setData({
-      outValue: this.data.normalValue
-    });
+    this.initView();
   },
   properties: {
     value: {
       type: Array,
-      value: []
+      value: [],
+      observer() {
+        this.initView();
+      }
     },
     // 非树形数据，仅在value无传参时生效
     unnormalizedValue: {
       type: Array,
-      value: []
+      value: [],
+      observer() {
+        this.initView();
+      }
     },
     fatherKey: {
       type: String,
@@ -62,6 +54,23 @@ Component({
     normalValue: []
   },
   methods: {
+    initView() {
+      // 优先使用value
+      if (this.properties.value.length > 0) {
+        this.setData({
+          normalValue: this.properties.value
+        });
+      } else {
+        // 将unnormalizedValue标准化
+        this.setData({
+          normalValue: this.normalizeValue()
+        });
+      }
+      // 设置初始的输出值
+      this.setData({
+        outValue: this.data.normalValue
+      });
+    },
     tapItem(e) {
       // 如果正在执行修改路径的方法
       if (this.data.isChange) {
@@ -143,7 +152,10 @@ Component({
         value: this.properties.unnormalizedValue,
         fatherKey: this.properties.fatherKey,
         selfKey: this.properties.selfKey,
-        rootValue: this.properties.rootValue === null ? undefined : this.properties.rootValue
+        rootValue:
+          this.properties.rootValue === null
+            ? undefined
+            : this.properties.rootValue
       });
     }
   }
