@@ -1,9 +1,6 @@
 // components/path-view/path-view.js
 import toTree from './toTree';
 Component({
-  attached() {
-    this.initView();
-  },
   properties: {
     value: {
       type: Array,
@@ -55,6 +52,7 @@ Component({
   },
   methods: {
     initView() {
+      console.log(1)
       // 优先使用value
       if (this.properties.value.length > 0) {
         this.setData({

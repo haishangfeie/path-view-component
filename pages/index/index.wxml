@@ -3,10 +3,20 @@
   <text class="head-title">例子</text>
   <text class="item">传入树形数据</text>
   <path-view value="{{value}}"
-             btnTxt='选中本项'
+             btnTxt="选中本项"
              catchtapBtn="selThis"></path-view>
   <text class="item">传入未转换为树形结构的数组</text>
   <path-view unnormalizedValue="{{unnormalizedValue}}"
-             btnTxt='选中本项'
+             btnTxt="选中本项"
+             catchtapBtn="selThis"></path-view>
+  <!-- 这里是展示其他传入的值可不可以动态更新:pathMode/firstFloorTxt/btnTxt可以动态更新，而fatherKey/ -->
+  <text class="item">验证其他数据是否可以动态更新</text>
+  <path-view id='pathView'
+             unnormalizedValue="{{unnormalizedValue2}}"
+             btnTxt="选中本项"
+             pathMode="{{pathMode}}"
+             firstFloorTxt="{{firstFloorTxt}}"
+             btnTxt="{{btnTxt}}"
+             fatherKey="{{fatherKey}}"
              catchtapBtn="selThis"></path-view>
 </view>
