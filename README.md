@@ -10,9 +10,6 @@
 路径视图动态效果图-路径模式：mode2:
 ![路径视图动态效果图-路径模式：mode2](https://github.com/haishangfeie/path-view-component/blob/master/static/2.gif?raw=true)
 
-# 更新说明
-2018-08-13 修复value以及unnormalizedValue更新时视图无法同步更新的bug。更详细的说明留待后续补充。。
-
 # API
 
 | 参数              | 说明                                                                                                                                                                                                                                                         | 类型   | 可选值 | 默认值    |
@@ -24,7 +21,7 @@
 | unnormalizedValue | 仅在未传入 value 时生效，通过这个参数可以传入未转化为树状的数组                                                                                                                                                                                              | Array  | Y      | []        |
 | fatherKey         | 设置 unnormalizedValue 各子元素表示父级的标识符的键值                                                                                                                                                                                                        | String | Y      | pid       |
 | selfKey           | 设置 unnormalizedValue 各子元素表示自身的标识符的键值                                                                                                                                                                                                        | String | Y      | id        |
-| rootValue         | 设置 unnormalizedValue 中 selfKey 对应的值是什么时表示其是第一级的元素，即其没有父元素，默认时，没有该元素没有 fatherKey 字段或者该字段设置为 undefined 均认为其是第一级元素 | String | Y      | null |
+| rootValue         | 设置 unnormalizedValue 中 fatherKey 对应的值是什么时表示其是第一级的元素，即其没有父元素，默认时，没有该元素没有 fatherKey 字段或者该字段设置为 undefined 均认为其是第一级元素 | String | Y      | null |
 
 # 事件
 
