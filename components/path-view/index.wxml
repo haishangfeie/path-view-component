@@ -31,10 +31,10 @@
           wx:key="{{index}}"
           class="list-view-item"
           bindtap="tapItem"
-          data-text="{{item.title}}"
+          data-text="{{item[contentKey]}}"
           data-index="{{index}}">
       <text class="title"
-            space="ensp">{{item.title}} </text>
+            space="ensp">{{item[contentKey]}} </text>
       <text wx:if="{{item.children}}"
             class="tip">（进入下一级）</text>
       <view class="btn"

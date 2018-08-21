@@ -71,36 +71,36 @@ Page({
     unnormalizedValue: [
       {
         id: 1,
-        title:'1'
+        name:'1'
       },
       {
         id: 2,
         pid: 1,
-        title:'2'
+        name:'2'
       },
       {
         id: 3,
         pid: 1,
-        title: '3'
+        name: '3'
       },
       {
         id: 4,
         pid: 2,
-        title: '4'
+        name: '4'
       },
       {
         id: 5,
         pid: 4,
-        title: '5'
+        name: '5'
       },
       {
         id: 6,
         pid: 5,
-        title: '6'
+        name: '6'
       },
       {
         id: 7,
-        title: '7'
+        name: '7'
       }
     ]
   },

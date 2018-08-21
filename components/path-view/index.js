@@ -40,6 +40,10 @@ Component({
     btnTxt: {
       type: String,
       value: '选择'
+    },
+    contentKey:{
+      type:String,
+      value:'title'
     }
   },
   data: {

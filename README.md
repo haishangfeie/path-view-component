@@ -22,6 +22,7 @@
 | fatherKey         | 设置 unnormalizedValue 各子元素表示父级的标识符的键值                                                                                                                                                                                                        | String | Y      | pid       |
 | selfKey           | 设置 unnormalizedValue 各子元素表示自身的标识符的键值                                                                                                                                                                                                        | String | Y      | id        |
 | rootValue         | 设置 unnormalizedValue 中 fatherKey 对应的值是什么时表示其是第一级的元素，即其没有父元素，默认时，没有该元素没有 fatherKey 字段或者该字段设置为 undefined 均认为其是第一级元素 | String | Y      | null |
+| contentKey         | 设置 每级内容显示内容对应的键值，之前只能是item.title，现在可以根据需要设置 | String | Y      | title |
 
 # 事件
 
@@ -180,3 +181,6 @@ unnormalizedValue: [
   }
 ]
 ```
+
+# 补充
+之前的
