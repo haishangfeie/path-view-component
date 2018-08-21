@@ -2,6 +2,8 @@
 
 > 微信小程序 树形菜单替代组件：路径视图 path-view
 
+[项目地址](https://github.com/haishangfeie/path-view-component)
+
 ## 项目截图
 
 路径视图动态效果图-路径模式：mode1:
@@ -12,17 +14,17 @@
 
 # API
 
-| 参数              | 说明                                                                                                                                                                                                                                                         | 类型   | 可选值 | 默认值    |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ | ------ | --------- |
-| value             | 要显示的树状数据                                                                                                                                                                                                                                             | Array  | Y      | []        |
-| pathMode          | 路径模式，支持：'mode1'、'mode2'。'mode1'模式，点击路径跳转时视图显示对应标签下一级的内容,'mode2'模式，点击路径跳转时视图显示标签对应的那一层级的内容                                                                                                        | String | Y      | mode1     |
-| firstFloorTxt     | pathMode 为'mode1'时生效，指定第一级标签的文本                                                                                                                                                                                                              | String | Y      | 第一级    |
-| btnTxt            | 点击按钮显示的文本                                                                                                                                                                                                                                           | String | Y      | 选择      |
-| unnormalizedValue | 仅在未传入 value 时生效，通过这个参数可以传入未转化为树状的数组                                                                                                                                                                                              | Array  | Y      | []        |
-| fatherKey         | 设置 unnormalizedValue 各子元素表示父级的标识符的键值                                                                                                                                                                                                        | String | Y      | pid       |
-| selfKey           | 设置 unnormalizedValue 各子元素表示自身的标识符的键值                                                                                                                                                                                                        | String | Y      | id        |
-| rootValue         | 设置 unnormalizedValue 中 fatherKey 对应的值是什么时表示其是第一级的元素，即其没有父元素，默认时，没有该元素没有 fatherKey 字段或者该字段设置为 undefined 均认为其是第一级元素 | String | Y      | null |
-| contentKey         | 设置 每级内容显示内容对应的键值，之前只能是item.title，现在可以根据需要设置 | String | Y      | title |
+| 参数              | 说明                                                                                                                                                                           | 类型   | 可选值 | 默认值 |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ | ------ | ------ |
+| value             | 要显示的树状数据                                                                                                                                                               | Array  | Y      | []     |
+| pathMode          | 路径模式，支持：'mode1'、'mode2'。'mode1'模式，点击路径跳转时视图显示对应标签下一级的内容,'mode2'模式，点击路径跳转时视图显示标签对应的那一层级的内容                          | String | Y      | mode1  |
+| firstFloorTxt     | pathMode 为'mode1'时生效，指定第一级标签的文本                                                                                                                                 | String | Y      | 第一级 |
+| btnTxt            | 点击按钮显示的文本                                                                                                                                                             | String | Y      | 选择   |
+| unnormalizedValue | 仅在未传入 value 时生效，通过这个参数可以传入未转化为树状的数组                                                                                                                | Array  | Y      | []     |
+| fatherKey         | 设置 unnormalizedValue 各子元素表示父级的标识符的键值                                                                                                                          | String | Y      | pid    |
+| selfKey           | 设置 unnormalizedValue 各子元素表示自身的标识符的键值                                                                                                                          | String | Y      | id     |
+| rootValue         | 设置 unnormalizedValue 中 fatherKey 对应的值是什么时表示其是第一级的元素，即其没有父元素，默认时，没有该元素没有 fatherKey 字段或者该字段设置为 undefined 均认为其是第一级元素 | String | Y      | null   |
+| contentKey        | 设置 每级内容显示内容对应的键值，之前只能是 item.title，现在可以根据需要设置                                                                                                   | String | Y      | title  |
 
 # 事件
 
@@ -142,7 +144,7 @@ Page({
 });
 ```
 
-也可以是带有每个元素带有父级标识符的普通数组(利用unnormalizedValue传入)
+也可以是带有每个元素带有父级标识符的普通数组(利用 unnormalizedValue 传入)
 
 ```
 unnormalizedValue: [
@@ -183,10 +185,41 @@ unnormalizedValue: [
 ```
 
 # 补充
-之前的版本中修改value/unnormalizedValue视图不会同步更新，我修改了一下代码，这个bug已经修复了。其他大部分值修改了其实是可以更新到的。不过，还是有两个值fatherKey/selfKey改变了视图不会刷新的，应该是只有这两个了，我看了一下，不过这个我不打算改了。原因是我觉得这两个值改变的场景不多，而且这两个值改变了，一般都会改变value/unnormalizedValue，如果重复触发视图更新好像也不是很合理。
+
+之前的版本中修改 value/unnormalizedValue 视图不会同步更新，我修改了一下代码，这个 bug 已经修复了。其他大部分值修改了其实是可以更新到的。不过，还是有两个值 fatherKey/selfKey 改变了视图不会刷新的，应该是只有这两个了，我看了一下，不过这个我不打算改了。原因是我觉得这两个值改变的场景不多，而且这两个值改变了，一般都会改变 value/unnormalizedValue，如果重复触发视图更新好像也不是很合理。
 我也想了一下，如果真的遇到要刷新视图有什么方法。。分享如下：
+
+- 方法一：先改其他值，再改 value/unnormalizedValue
+
 ```js
-// 方法一：
-
-
+this.setData(
+  {
+    fatherKey: 'fatherId'
+  },
+  () => {
+    this.setData({
+      unnormalizedValue: unnormalizedValue
+    });
+  }
+);
 ```
+
+- 方法二：调用组件的方法强制更新视图
+```html
+<path-view id='pathView'
+            unnormalizedValue="{{unnormalizedValue2}}"
+            fatherKey="{{fatherKey}}"
+            catchtapBtn="selThis"></path-view>
+```
+```js
+this.setData({
+    fatherKey: 'fatherId'
+  },
+  () => {
+    this.selectComponent('#pathView').initView();
+  }
+);
+```
+
+# 最后
+很高兴有人使用了我的组件，可惜组件有一些bug非常遗憾，可能给他们也带来了困扰。但我会继续维护我的代码，让它变得更好的。另外，组件目前对样式没有暴露什么api，想修改的话最好就是直接在组件里改了。
