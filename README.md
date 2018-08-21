@@ -12,6 +12,10 @@
 路径视图动态效果图-路径模式：mode2:
 ![路径视图动态效果图-路径模式：mode2](https://github.com/haishangfeie/path-view-component/blob/master/static/2.gif?raw=true)
 
+# 更新说明
+2018-08-13 修复value以及unnormalizedValue更新时视图无法同步更新的bug。~~更详细的说明留待后续补充。。~~说明已在下方补充
+2018-08-21 新增了contentKey，设置 每级内容显示内容对应的键值，之前只能是 item.title，现在可以根据需要设置。
+
 # API
 
 | 参数              | 说明                                                                                                                                                                           | 类型   | 可选值 | 默认值 |
