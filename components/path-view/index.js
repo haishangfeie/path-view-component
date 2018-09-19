@@ -41,9 +41,9 @@ Component({
       type: String,
       value: '选择'
     },
-    contentKey:{
-      type:String,
-      value:'title'
+    contentKey: {
+      type: String,
+      value: 'title'
     }
   },
   data: {
@@ -69,7 +69,8 @@ Component({
       }
       // 设置初始的输出值
       this.setData({
-        outValue: this.data.normalValue
+        outValue: this.data.normalValue,
+        currentPath: []
       });
     },
     tapItem(e) {
