@@ -11,3 +11,9 @@
   padding-left: 10px;
   font-size: 16px;
 }
+.ps {
+  margin-bottom: 10px;
+  padding: 0 10px;
+  color: #666;
+  font-size: 24rpx;
+}

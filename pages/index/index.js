@@ -71,12 +71,12 @@ Page({
     unnormalizedValue: [
       {
         id: 1,
-        name:'1'
+        name: '1'
       },
       {
         id: 2,
         pid: 1,
-        name:'2'
+        name: '2'
       },
       {
         id: 3,
@@ -102,9 +102,36 @@ Page({
         id: 7,
         name: '7'
       }
-    ]
+    ],
+    unnormalizedValue2:[]
   },
   selThis(e) {
     console.log(e.detail);
+  },
+  onLoad() {
+    this.setData({
+      unnormalizedValue2: this.data.unnormalizedValue
+    },()=>{
+      setTimeout(() => {
+        this.setData({
+          unnormalizedValue2: this.data.unnormalizedValue2.concat([
+            {
+              id: 8,
+              name: '8'
+            },
+            {
+              id: 9,
+              pid: 5,
+              name: '9'
+            },
+            {
+              id: 10,
+              pid: 1,
+              name: '10'
+            },
+          ])
+        })
+      }, 2000);
+    });
   }
 });

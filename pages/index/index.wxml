@@ -10,4 +10,12 @@
              btnTxt='选中本项'
              contentKey="name"
              catchtapBtn="selThis"></path-view>
+  <text class="item">开启位置保持，数据动态更新后保持界面位置</text>
+  <text class="ps">这里的意思是开启位置保持后，如果客户点下一级进到某一层时，数据动态刷新，只要该界面的父元素唯一标识符id（或是通过fatherKey自定义的父级的标识符）没有改变，界面可以保持在客户操作的该层而不会初始化到最顶部</text>
+  <path-view keepLoc="{{true}}"
+             unnormalizedValue="{{unnormalizedValue2}}"
+             btnTxt='选中本项'
+             contentKey="name"
+             catchtapBtn="selThis"></path-view>
+
 </view>
