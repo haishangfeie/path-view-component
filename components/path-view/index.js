@@ -196,9 +196,9 @@ Component({
       }
       let tree = JSON.parse(JSON.stringify(this.data.normalValue));
       for (let i = 0; i < tree.length; i++) {
-        tree[i].__path = [i];
+        tree[i].__location = [i];
         if (id === tree[i][this.properties.selfKey]) {
-          return tree[i].__path;
+          return tree[i].__location;
         }
       }
       var stark = [];
@@ -207,9 +207,9 @@ Component({
         var temp = stark.shift();
         if (temp.children) {
           for (let j = 0; j < temp.children.length; j++) {
-            temp.children[j].__path = [...temp.__path, j];
+            temp.children[j].__location = [...temp.__location, j];
             if (id === temp.children[j][this.properties.selfKey]) {
-              return temp.children[j].__path;
+              return temp.children[j].__location;
             }
           }
           // 当前节点有子节点时，将子节点放到当前的栈的前面
